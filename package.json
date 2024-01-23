@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "moment": "^2.30.1"
+  },
+  "name": "http-npm-fs-hw",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
