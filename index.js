@@ -45,21 +45,11 @@ const fs = require("fs").promises;
 
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
-    const htmlString = `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    </head>
-    <body>
-    <h1>Hello</h1>
-    <button>World</button>
-    </body>
-    </html>`;
-    res.setHeader("Content-Type", "text/html");
-    res.write(htmlString);
-    res.end();
+    fs.readFile("./index.html", "utf-8").then((data) => {
+      res.setHeader("Content-Type", "text/html");
+      res.write(data);
+      res.end();
+    });
   } else if (req.url === "/api") {
     fs.readFile("./data.json", "utf-8").then((data) => {
       res.setHeader("Content-Type", "application/json");
@@ -67,9 +57,11 @@ const server = http.createServer((req, res) => {
       res.end();
     });
   } else {
-    res.writeHead(404);
-    res.write("Not found");
-    res.end();
+    fs.readFile("./404.html", "utf-8").then((data) => {
+      res.writeHead(404);
+      res.write(data);
+      res.end();
+    });
   }
 });
 
